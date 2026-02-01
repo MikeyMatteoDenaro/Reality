@@ -31,27 +31,38 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 90px;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 22px;
   z-index: 1000;
   backdrop-filter: blur(12px);
-  background: rgba(0, 0, 0, 0.35); /* leichtes Schwarz */
+
+  /* 🔥 HIER: Bild im Banner */
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.55),
+      rgba(0,0,0,0.55)
+    ),
+    url("banner.png") center/cover no-repeat;
+
   overflow: hidden;
   border-bottom: none;
   transition: all 0.3s ease;
-  animation: navPulse 6s ease-in-out infinite, navGlow 5s ease-in-out infinite; /* Pulsieren + Glow */
+  animation: navPulse 6s ease-in-out infinite, navGlow 5s ease-in-out infinite;
 }
 
 /* Sanftes Pulsieren des Hintergrunds */
 @keyframes navPulse {
-  0%, 100% {
-    background: rgba(0, 0, 0, 0.35);
+  0% {
+    filter: brightness(0.95) saturate(1);
   }
   50% {
-    background: rgba(0, 0, 0, 0.5); /* leichtes Aufleuchten */
+    filter: brightness(1.2) saturate(1.2);
+  }
+  100% {
+    filter: brightness(0.95) saturate(1);
   }
 }
 
@@ -67,8 +78,13 @@ nav {
 
 /* Scroll-Effekt: Höhe verkleinern + Schatten */
 body.scrolled nav {
-  height: 70px;
-  box-shadow: 0 0 15px rgba(255,215,0,0.3);
+  height: 100px;
+  background:
+    linear-gradient(
+      rgba(0,0,0,0.75),
+      rgba(0,0,0,0.75)
+    ),
+    url("banner.png") center/cover no-repeat;
 }
 
 /* Blitz über die Navbar: langsamer Start, danach schneller */
@@ -135,7 +151,7 @@ nav a:hover {
 /* ================== HERO ================== */
 .hero {
   height: 100vh;
-  margin-top: 70px;
+  margin-top: 135px;
   position: relative;
 }
 
